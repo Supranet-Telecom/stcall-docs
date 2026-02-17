@@ -1,0 +1,16 @@
+{
+  "name": "stcall-docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "preview": "nuxt preview",
+    "postinstall": "node patches/fix-docus-i18n.js"
+  },
+  "dependencies": {
+    "docus": "latest",
+    "better-sqlite3": "^12.5.0",
+    "nuxt": "^4.2.2"
+  }
+}
