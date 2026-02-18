@@ -22,3 +22,6 @@ logs
 .env.*
 !.env.example
 bun.lock
+
+# Portainer compose (contains deployment-specific values)
+portainer-docker-compose.yml

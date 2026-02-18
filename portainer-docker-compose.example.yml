@@ -1,0 +1,39 @@
+# =============================================================================
+# stCall Docs - Portainer Docker Compose
+# =============================================================================
+# Images are uploaded manually to Portainer (no registry).
+#
+# Usage:
+#   1. Copy this file to portainer-docker-compose.yml and fill in the values
+#   2. Upload Docker image manually to Portainer
+#   3. Create a new Stack in Portainer
+#   4. Paste the file content
+#   5. Deploy the stack
+# =============================================================================
+
+services:
+  # ---------------------------------------------------------------------------
+  # stCall Docs (Docus/Nuxt Documentation)
+  # ---------------------------------------------------------------------------
+  stcall-docs:
+    image: # your-registry/stcall-docs:tag
+    container_name: stcall-docs
+    restart: unless-stopped
+    networks:
+      - traefik-public
+    environment:
+      - NODE_ENV=production
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.stcall-docs.rule=Host(``) # your domain
+      - traefik.http.routers.stcall-docs.entrypoints=websecure
+      - traefik.http.routers.stcall-docs.tls=true
+      - traefik.http.routers.stcall-docs.tls.certresolver= # your cert resolver
+      - traefik.http.services.stcall-docs.loadbalancer.server.port=3000
+
+# =============================================================================
+# Networks
+# =============================================================================
+networks:
+  traefik-public:
+    external: true

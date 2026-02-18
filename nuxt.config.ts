@@ -1,5 +1,6 @@
 export default defineNuxtConfig({
   extends: ['docus'],
+  nitro: { preset: 'bun' },
   modules: ['@nuxtjs/i18n', '@nuxtjs/color-mode'],
   colorMode: {
     preference: 'dark',
